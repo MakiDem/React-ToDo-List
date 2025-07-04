@@ -1,10 +1,10 @@
-function taskCard() {
+function TaskCard({text}) {
   return (
     <div className="task-card">
-      <p>📝 Finish React project</p>
+      <p>{text}</p>
       <button className="delete-btn">✖</button>
   </div>
   )
 }
 
-export default taskCard
+export default TaskCard
