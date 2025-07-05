@@ -20,14 +20,18 @@ function App() {
   const addTask = (e) => {
     e.preventDefault()
 
-    if (task.trim()) setTasks([...tasks, task])
-      setTask('')
+    
+    if (task.trim()) {
+      const currTask = {id: Date.now(), text: task}
+      setTasks([...tasks, currTask])
+    } 
+    setTask('')
   }
 
   const deleteTask = (id) => {
-    const newTasks = tasks.filter(task => {
+    const newTasks = tasks.filter(task => (
       task.id !== id
-    })
+    ))
     setTasks(newTasks)
   }
 
@@ -45,7 +49,7 @@ function App() {
 
       <div className="task-list">
         {tasks.map((task, i) => (
-          <TaskCard key={i} text={task} onDelete={deleteTask}/>
+          <TaskCard key={i} id={task.id} text={task.text} onDelete={deleteTask}/>
         ))}
       </div>
     </div>
