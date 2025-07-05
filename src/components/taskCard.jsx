@@ -1,8 +1,10 @@
-function TaskCard({text}) {
+function TaskCard({text, key, onDelete}) {
   return (
     <div className="task-card">
       <p>{text}</p>
-      <button className="delete-btn">✖</button>
+      <button onClick={() => {
+        onDelete(key)
+      }} className="delete-btn">✖</button>
   </div>
   )
 }

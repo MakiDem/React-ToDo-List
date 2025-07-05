@@ -24,6 +24,13 @@ function App() {
       setTask('')
   }
 
+  const deleteTask = (id) => {
+    const newTasks = tasks.filter(task => {
+      task.id !== id
+    })
+    setTasks(newTasks)
+  }
+
   return (
     <div className="todo-container">
       <h1>My Tasks</h1>
@@ -37,8 +44,8 @@ function App() {
       </form>
 
       <div className="task-list">
-        {tasks.map(task => (
-          <TaskCard text={task}/>
+        {tasks.map((task, i) => (
+          <TaskCard key={i} text={task} onDelete={deleteTask}/>
         ))}
       </div>
     </div>
